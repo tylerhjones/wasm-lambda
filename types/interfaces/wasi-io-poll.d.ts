@@ -1,18 +1,5 @@
-// https://github.com/bytecodealliance/jco/blob/b703b2850d3170d786812a56f40456870c780311/packages/preview2-shim/types/interfaces/wasi-io-poll.d.ts
 export namespace WasiIoPoll {
-  /**
-   * Return the readiness of a pollable. This function never blocks.
-   * 
-   * Returns `true` when the pollable is ready, and `false` otherwise.
-   */
   export { Pollable };
-  /**
-   * `block` returns immediately if the pollable is ready, and otherwise
-   * blocks until ready.
-   * 
-   * This function is equivalent to calling `poll.poll` on a list
-   * containing only this pollable.
-   */
   /**
    * Poll for completion on a set of pollables.
    * 
@@ -33,10 +20,22 @@ export namespace WasiIoPoll {
    * the pollables has an error, it is indicated by marking the source as
    * being reaedy for I/O.
    */
-  export function poll(in_: Pollable[]): Uint32Array;
+  export function poll(in_: Array<Pollable>): Uint32Array;
 }
 
 export class Pollable {
+  /**
+  * Return the readiness of a pollable. This function never blocks.
+  * 
+  * Returns `true` when the pollable is ready, and `false` otherwise.
+  */
   ready(): boolean;
+  /**
+  * `block` returns immediately if the pollable is ready, and otherwise
+  * blocks until ready.
+  * 
+  * This function is equivalent to calling `poll.poll` on a list
+  * containing only this pollable.
+  */
   block(): void;
 }
