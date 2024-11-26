@@ -6,7 +6,7 @@ import {
   Fields,
 } from 'wasi:http/types@0.2.0';
 
-function handle(req: IncomingRequest, resp: ResponseOutparam) {
+function handle(_req: IncomingRequest, resp: ResponseOutparam) {
   // Start building an outgoing response
   const outgoingResponse = new OutgoingResponse(new Fields());
 
