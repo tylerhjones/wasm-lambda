@@ -293,7 +293,7 @@ package wasi:http@0.2.0 {
 
 As you can see above, the `component wit` subcommand prints out the combined/merged WIT for the entire component.
 
-You can also convert the WebAssembly binary to the [WebAssembly Text Format ("WAT")][wat]:
+You can also convert the WebAssembly binary to the [WebAssembly Text Format ("WAT")][wat] (which is extended via the [Component Model][cm]):
 
 ```console
 wasm-tools print dist/component.wasm -o dist/component.wat
@@ -339,6 +339,10 @@ If you take a look at the WAT file, you'll see output like the following:
   )
 )
 ```
+
+[wasm-tools]: https://github.com/bytecodealliance/wasm-tools
+[wat]: https://developer.mozilla.org/en-US/docs/WebAssembly/Understanding_the_text_format
+[cm]: https://github.com/WebAssembly/component-model/blob/main/design/mvp/Explainer.md
 
 ## Running the component our component and serving requests
 
