@@ -47,7 +47,7 @@ types for it with `jco types`, so let's add a NPM script for that:
 
 ```diff
   "scripts": {
-+    "generate:types": "jco types wit/ -o types/",
+    "generate:types": "jco types wit/ -o types/",
     "build:tsc": "tsc",
     "build:js": "jco componentize -w wasi-http/wit --world-name proxy -o dist/jsproxy.wasm dist/index.js",
 ```
@@ -55,7 +55,7 @@ types for it with `jco types`, so let's add a NPM script for that:
 Now that we have a script, we can try to generate the types, but they will fail:
 
 ```
-$ pnpm generate:types
+$ npm generate:types
 
 > js_wasm_lambda@1.0.0 generate:types /path/to/your/project/wasm-lambda
 > jco types wit/ -o types/
@@ -90,6 +90,8 @@ wkg get wasi:cli@0.2.0
 wkg get wasi:filesystem@0.2.0
 wkg get wasi:sockets@0.2.0
 ```
+
+`Warning; this wkg library uses the rust tls and does not configure for custom certs, so you cannot use this library if you have an alternate root ca`
 
 This will add many WIT files to your local repository, but you can move/rename all the downloaded `*.wit` files
 by making a folder named `deps` under `wit` and dropping them there.
