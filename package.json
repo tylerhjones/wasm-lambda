@@ -4,9 +4,11 @@
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
+    "generate:types": "jco types wit/ -o types/",
     "build:tsc": "tsc",
-    "build:js": "jco componentize -w wasi-http/wit --world-name proxy -o dist/jsproxy.wasm dist/index.js",
-    "srv": "jco serve dist/jsproxy.wasm",
+    "build:js": "jco componentize -w wit/ --world-name component -o dist/component.wasm dist/index.js",
+    "build": "npm run build:tsc && npm run build:js",
+    "srv": "jco serve dist/component.wasm",
     "build": "npm run build:tsc && npm run build:js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "help": "jco componentize --help"

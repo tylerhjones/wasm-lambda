@@ -1,4 +1,3 @@
-// https://github.com/bytecodealliance/jco/blob/b703b2850d3170d786812a56f40456870c780311/packages/preview2-shim/types/interfaces/wasi-clocks-monotonic-clock.d.ts
 export namespace WasiClocksMonotonicClock {
   /**
    * Read the current value of the clock.
@@ -24,10 +23,8 @@ export namespace WasiClocksMonotonicClock {
    */
   export function subscribeDuration(when: Duration): Pollable;
 }
-
 import type { Pollable } from './wasi-io-poll.js';
 export { Pollable };
-
 /**
  * An instant in time, in nanoseconds. An instant is relative to an
  * unspecified initial value, and can only be compared to instances from

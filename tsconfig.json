@@ -1,13 +1,12 @@
 {
   "compilerOptions": {
-  
-    "target": "es2022",                                  
+
+    "target": "es2022",
     /* Modules */
-    "module": "es2022",                                
+    "module": "es2022",
     "paths": {
-      "wasi:http": [ "./node_modules/@bytecodealliance/preview2-shim/lib/nodejs/http.js" ],
-      "wasi:http/types": [ "./types/wasi-http-types.d.ts" ]
-    },                                      
+      "wasi:http/types@0.2.0": [ "./types/interfaces/wasi-http-types.d.ts" ]
+    },
 
     "outDir": "./dist/",                                   /* Specify an output folder for all emitted files. */
 
