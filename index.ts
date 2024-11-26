@@ -1,15 +1,14 @@
-import { types } from 'wasi:http';
 import {
   IncomingRequest,
   ResponseOutparam,
   OutgoingBody,
   OutgoingResponse,
   Fields,
-} from 'wasi:http/types';
+} from 'wasi:http/types@0.2.0';
 
-function handle(req: IncomingRequest, resp: ResponseOutparam) {
+function handle(_req: IncomingRequest, resp: ResponseOutparam) {
   // Start building an outgoing response
-  const outgoingResponse = new types.OutgoingResponse(new types.Fields());
+  const outgoingResponse = new OutgoingResponse(new Fields());
 
   // Access the outgoing response body
   let outgoingBody = outgoingResponse.body();
@@ -27,9 +26,9 @@ function handle(req: IncomingRequest, resp: ResponseOutparam) {
   // Set the status code for the response
   outgoingResponse.setStatusCode(200);
   // Finish the response body
-  types.OutgoingBody.finish(outgoingBody, undefined);
+  OutgoingBody.finish(outgoingBody, undefined);
   // Set the created response
-  types.ResponseOutparam.set(resp, { tag: 'ok', val: outgoingResponse });
+  ResponseOutparam.set(resp, { tag: 'ok', val: outgoingResponse });
 }
 
 export const incomingHandler = {
