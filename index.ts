@@ -5,12 +5,25 @@ import {
   OutgoingResponse,
   Fields,
 } from 'wasi:http/types@0.2.0';
-import { WasiKeyvalueStore } from 'wasi:keyvalue/store@0.2.0-draft';
+
+// NOTE: unfortunately until https://github.com/bytecodealliance/jco/pull/528 is released
+// we are misusing types that were intended for jco host plugins
+//
+// In the future we can generate our types with `jco guest-types` and get more ergonomic
+// declaration files that don't need to be treated this way.
+import * as WasiKeyvalueStore from 'wasi:keyvalue/store@0.2.0-draft';
+
+// NOTE: The wasmtime built-in implementation of wasi:keyvalue uses an in-memory
+// store, which requires an empty identifier
+//
+// see: https://docs.rs/wasmtime-wasi-keyvalue/27.0.0/wasmtime_wasi_keyvalue/
+// see: https://github.com/bytecodealliance/wasmtime/blob/main/src/commands/serve.rs#L221
+const BUCKET_NAME = ''; // 'my-state';
 
 async function innerHandler(_req: IncomingRequest): Promise<{ statusCode: number, body: string }> {
   try {
     console.log('Opening keyvalue store');
-    WasiKeyvalueStore.open('my-state');
+    WasiKeyvalueStore.open(BUCKET_NAME);
     console.log('keyvalue store opened');
     return {
       statusCode: 200,

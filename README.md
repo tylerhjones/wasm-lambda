@@ -85,20 +85,7 @@ To pull down WIT, we can use [`wkg`, from the `bytecodealliance/wasm-pkg-tools`]
 Since WASI is a growing standard, and well integrated we can generally follow the error messages:
 
 ```console
-wkg get wasi:random@0.2.0
-wkg get wasi:cli@0.2.0
-wkg get wasi:filesystem@0.2.0
-wkg get wasi:sockets@0.2.0
-```
-
-`Warning; this wkg library uses the rust tls and does not configure for custom certs, so you cannot use this library if you have an alternate root ca`
-
-This will add many WIT files to your local repository, but you can move/rename all the downloaded `*.wit` files
-by making a folder named `deps` under `wit` and dropping them there.
-
-```console
-mkdir wit/deps
-mv *.wit wit/deps
+wkg wit fetch
 ```
 
 After doing this, running `jco types` (possible also via the node script) should work:
@@ -117,6 +104,9 @@ jco types wit/ -o types/
  - types/interfaces/wasi-io-streams.d.ts              8.91 KiB
  - types/wit.d.ts                                     0.47 KiB
 ```
+
+> [!NOTE]
+> You can use `npm run generate:types` as a shortcut
 
 Note that while we're generating types to match the WIT interfaces, the *implementations* of those interfaces
 are not bound yet, and likely will not be until runtime.
