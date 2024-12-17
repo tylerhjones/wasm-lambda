@@ -7,7 +7,8 @@
     "generate:types": "jco types wit/ -o types/",
     "build:tsc": "tsc",
     "build:js": "jco componentize -w wit/ --world-name component -o ./dist/component.wasm ./dist/index.js",
-    "build": "npm run build:tsc && npm run build:js",
+    "build:bun": "bun run bundle.ts",
+    "build": "npm run build:bun && npm run build:js",
     "srv": "jco serve dist/component.wasm",
     "test": "node test.js",
     "help": "jco componentize --help"
@@ -18,8 +19,12 @@
     "@bytecodealliance/componentize-js": "^0.13.0",
     "@bytecodealliance/jco": "^1.8.1",
     "@bytecodealliance/preview2-shim": "^0.17.1",
+    "@nats-io/nats-core": "^3.0.0-47",
+    "@types/bun": "^1.1.14",
     "@types/node": "^22.7.6",
+    "bun": "^1.1.38",
     "node-fetch": "^3.3.2",
+    "redis-server": "^1.2.2",
     "typescript": "^5.6.3"
   }
 }

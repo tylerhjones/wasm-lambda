@@ -5,15 +5,17 @@
     /* Modules */
     "module": "es2022",
     "paths": {
-      "wasi:http/types@0.2.0": [ "./types/interfaces/wasi-http-types.d.ts" ]
+      "wasi:http/types@0.2.0": [ "./types/interfaces/wasi-http-types.d.ts" ],
+      "wasi:keyvalue/store@0.2.0-draft": [ "./types/interfaces/wasi-keyvalue-store.d.ts" ],
+      "wasi:filesystem/types@0.2.1": [ "./types/interfaces/wasi-filesystem-types.d.ts" ],
+      // "@nats-io/nats-core": ["./node_modules/@nats-io/nats-core/lib/mod.d.js"]
     },
 
-    "outDir": "./dist/",                                   /* Specify an output folder for all emitted files. */
+    "outDir": "./dist/", // Specify an output folder for all emitted files.
+    "baseUrl": ".",
+    "forceConsistentCasingInFileNames": true, //Ensure that casing is correct in imports.
 
-    "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
-
-    /* Type Checking */
-    // "strict": true,                                      /* Enable all strict type-checking options. */
-    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
+    // "strict": true,  // Enable all strict type-checking options. 
+    "skipLibCheck": true // Skip type checking all .d.ts files.
   }
 }
