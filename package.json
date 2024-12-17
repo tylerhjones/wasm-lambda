@@ -4,12 +4,14 @@
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
+    "generate:wit": "wkg wit fetch",
     "generate:types": "jco types wit/ -o types/",
     "build:tsc": "tsc",
     "build:js": "jco componentize -w wit/ --world-name component -o ./dist/component.wasm ./dist/index.js",
     "build:bun": "bun run bundle.ts",
     "build": "npm run build:bun && npm run build:js",
-    "srv": "jco serve dist/component.wasm",
+    "serve": "npm run srv",
+    "srv": "wasmtime serve -S keyvalue,cli dist/component.wasm",
     "test": "node test.js",
     "help": "jco componentize --help"
   },

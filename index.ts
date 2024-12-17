@@ -5,7 +5,13 @@ import {
   OutgoingResponse,
   Fields,
 } from 'wasi:http/types@0.2.0';
-import { WasiKeyvalueStore } from 'wasi:keyvalue/store@0.2.0-draft';
+
+// NOTE: unfortunately until https://github.com/bytecodealliance/jco/pull/528 is released
+// we are misusing types that were intended for jco host plugins
+//
+// In the future we can generate our types with `jco guest-types` and get more ergonomic
+// declaration files that don't need to be treated this way.
+import * as WasiKeyvalueStore from 'wasi:keyvalue/store@0.2.0-draft';
 
 async function innerHandler(_req: IncomingRequest): Promise<{ statusCode: number, body: string }> {
   try {
